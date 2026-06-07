@@ -39,8 +39,8 @@ class JwtService(
 
     fun validateToken(token: String): Boolean =
         try {
-            val claims = parser.parseClaimsJws(token)
-            claims.body.expiration.after(Date())
+            parser.parseClaimsJws(token)
+            true
         } catch (e: Exception) {
             false
         }
