@@ -31,7 +31,7 @@ class UserQueryApiTest {
     }
 
     @Test
-    fun `should document current user query`() {
+    fun `현재 로그인한 사용자를 조회한다`() {
         mockMvc.perform(
             get("/api/users/me")
                 .header("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."),

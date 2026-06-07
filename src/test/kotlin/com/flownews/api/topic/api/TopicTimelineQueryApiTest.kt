@@ -42,7 +42,7 @@ class TopicTimelineQueryApiTest {
     }
 
     @Test
-    fun `should document topic timeline query`() {
+    fun `토픽 타임라인을 조회한다`() {
         val mockResponse =
             TopicTimelineQueryResponse(
                 id = 1L,

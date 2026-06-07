@@ -35,7 +35,7 @@ class UserProfileUpdateApiTest {
     }
 
     @Test
-    fun `should document device token update`() {
+    fun `디바이스 토큰을 업데이트한다`() {
         mockMvc.perform(
             post("/api/users/device-token")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -60,7 +60,7 @@ class UserProfileUpdateApiTest {
     }
 
     @Test
-    fun `should document user withdrawal`() {
+    fun `회원을 탈퇴한다`() {
         mockMvc.perform(
             post("/api/users/withdraw")
                 .contentType(MediaType.APPLICATION_JSON)

@@ -34,7 +34,7 @@ class InteractionRecordApiTest {
     }
 
     @Test
-    fun `should document interaction record`() {
+    fun `사용자 인터랙션을 기록한다`() {
         mockMvc.perform(
             post("/api/interactions")
                 .contentType(MediaType.APPLICATION_JSON)

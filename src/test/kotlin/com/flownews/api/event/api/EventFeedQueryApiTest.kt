@@ -40,7 +40,7 @@ class EventFeedQueryApiTest {
     }
 
     @Test
-    fun `should document event feed query`() {
+    fun `이벤트 피드를 조회한다`() {
         val mockResponse =
             listOf(
                 EventFeedQueryResponse(

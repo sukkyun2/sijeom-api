@@ -35,7 +35,7 @@ class EventLikeApiTest {
     }
 
     @Test
-    fun `should document event like toggle`() {
+    fun `이벤트 좋아요를 토글한다`() {
         mockMvc.perform(
             post("/api/events/{eventId}/like", 1L)
                 .contentType(MediaType.APPLICATION_JSON),

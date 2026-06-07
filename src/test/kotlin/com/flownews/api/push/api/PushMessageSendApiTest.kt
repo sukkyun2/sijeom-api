@@ -37,7 +37,7 @@ class PushMessageSendApiTest {
     }
 
     @Test
-    fun `should document push message send by topic`() {
+    fun `토픽 기반으로 푸시 메시지를 전송한다`() {
         mockMvc.perform(
             post("/api/notifications/push?by=topic")
                 .contentType(MediaType.APPLICATION_JSON)

@@ -40,7 +40,7 @@ class TopicListQueryApiTest {
     }
 
     @Test
-    fun `should document all topics query`() {
+    fun `전체 토픽 목록을 조회한다`() {
         val mockTopics =
             listOf(
                 TopicListQueryResponse(
@@ -84,7 +84,7 @@ class TopicListQueryApiTest {
     }
 
     @Test
-    fun `should document top k topics query`() {
+    fun `상위 K개 토픽을 조회한다`() {
         val mockTopKTopics =
             listOf(
                 TopicTopKQueryResponse(
@@ -119,7 +119,7 @@ class TopicListQueryApiTest {
     }
 
     @Test
-    fun `should document topics search query`() {
+    fun `키워드로 토픽을 검색한다`() {
         val mockSearchResults =
             listOf(
                 TopicListQueryResponse(
