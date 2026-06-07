@@ -46,6 +46,10 @@ serviceAccountKey.json
 
 ### Claude Code ###
 .claude/settings.local.json
+.specstory/
+
+### Docs ###
+docs/
 
 
 ### SonarQube ###
