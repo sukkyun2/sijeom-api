@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 class SecurityConfig(
     private val jwtService: JwtService,
     private val userRepository: UserRepository,
+    private val accessDeniedHandler: JsonAccessDeniedHandler,
     @Value("\${spring.security.oauth2.client.base-uri}") private val redirectUrl: String,
 ) {
     @Bean
@@ -26,11 +27,10 @@ class SecurityConfig(
             .cors { }
             .csrf { it.disable() }
             .authorizeHttpRequests {
-                // FIXME: 임시로 모두 허용
                 it.requestMatchers("/actuator/health").permitAll()
                 it.requestMatchers("/api/login/**").permitAll()
                 it.requestMatchers("/api/topics/**").permitAll()
-                it.requestMatchers("/api/evnets/**").permitAll()
+                it.requestMatchers("/api/events/**").permitAll()
                 it.requestMatchers("/notifications/push").permitAll()
                 it.anyRequest().authenticated()
             }.oauth2Login {
@@ -40,7 +40,7 @@ class SecurityConfig(
 
                     val authToken = authentication as OAuth2AuthenticationToken
 
-                    if (user.deletedAt != null) {
+                    if (user.isDeleted()) {
                         val target =
                             if (authToken.authorizedClientRegistrationId == "google-mobile") {
                                 "sijeom://auth/callback?error=DELETED"
@@ -66,6 +66,7 @@ class SecurityConfig(
                     response.contentType = "application/json"
                     response.writer.write("""{"error":"Authentication required"}""")
                 }
+                it.accessDeniedHandler(accessDeniedHandler)
             }.sessionManagement {
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             }

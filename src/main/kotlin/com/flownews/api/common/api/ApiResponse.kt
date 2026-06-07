@@ -16,6 +16,8 @@ data class ApiResponse<T>(
 
         fun unauthorized(): ApiResponse<Void?> = ApiResponse("401", "unauthorized", null)
 
+        fun forbidden(): ApiResponse<Void?> = ApiResponse("403", "forbidden", null)
+
         fun error(message: String): ApiResponse<Void?> = ApiResponse("500", message, null)
 
         fun nodata(): ApiResponse<Void?> = ApiResponse("404", "데이터가 없습니다", null)
