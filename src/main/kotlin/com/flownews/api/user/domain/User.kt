@@ -40,6 +40,8 @@ class User(
 ) : BaseEntity() {
     fun requireId(): Long = id ?: throw IllegalStateException("User ID cannot be null")
 
+    fun isDeleted(): Boolean = deletedAt != null
+
     fun updateDeviceToken(newDeviceToken: String?) {
         if (newDeviceToken == null) return
 

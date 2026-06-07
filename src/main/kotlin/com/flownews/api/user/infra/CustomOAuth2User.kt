@@ -33,5 +33,5 @@ class CustomOAuth2User(
 
     override fun isCredentialsNonExpired(): Boolean = true
 
-    override fun isEnabled(): Boolean = true
+    override fun isEnabled(): Boolean = !user.isDeleted()
 }
