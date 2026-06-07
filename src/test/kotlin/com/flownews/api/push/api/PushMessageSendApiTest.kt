@@ -1,7 +1,7 @@
 package com.flownews.api.push.api
 
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.document
-import com.flownews.api.push.app.PushMessageSender
+import com.flownews.api.push.app.TopicEventPushService
 import com.flownews.testutils.ApiResponseFieldSpecs
 import com.flownews.testutils.MockMvcTestUtils
 import io.mockk.mockk
@@ -28,7 +28,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 @ExtendWith(RestDocumentationExtension::class)
 class PushMessageSendApiTest {
     private lateinit var mockMvc: MockMvc
-    private val pushSender = mockk<PushMessageSender>(relaxed = true)
+    private val pushSender = mockk<TopicEventPushService>(relaxed = true)
 
     @BeforeEach
     fun setUp(restDocumentation: RestDocumentationContextProvider) {
