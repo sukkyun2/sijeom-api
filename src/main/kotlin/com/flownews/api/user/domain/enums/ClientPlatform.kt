@@ -6,7 +6,6 @@ enum class ClientPlatform {
     ;
 
     companion object {
-        fun from(registrationId: String): ClientPlatform =
-            if (registrationId.endsWith("-mobile")) MOBILE else WEB
+        fun from(registrationId: String): ClientPlatform = if (registrationId.endsWith("-mobile")) MOBILE else WEB
     }
 }

@@ -23,9 +23,10 @@ class OAuth2LoginSuccessHandler(
     ) {
         val customUser = authentication.principal as CustomOAuth2User
         val user = customUser.getUser()
-        val platform = ClientPlatform.from(
-            (authentication as OAuth2AuthenticationToken).authorizedClientRegistrationId,
-        )
+        val platform =
+            ClientPlatform.from(
+                (authentication as OAuth2AuthenticationToken).authorizedClientRegistrationId,
+            )
 
         if (user.isDeleted()) {
             response.sendRedirect(redirectStrategy.buildErrorUrl(platform, "DELETED"))
