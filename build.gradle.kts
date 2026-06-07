@@ -22,6 +22,8 @@ java {
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://repo.spring.io/milestone") }
+    maven { url = uri("https://repo.spring.io/snapshot") }
 }
 
 extra["snippetsDir"] = file("build/generated-snippets")
@@ -29,6 +31,7 @@ val springAiVersion by extra("1.0.1")
 val springCloudVersion by extra("2023.0.6")
 
 dependencies {
+    implementation("org.springframework.ai:spring-ai-starter-model-openai")
     implementation("org.hibernate.orm:hibernate-vector:6.6.15.Final")
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -41,7 +44,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     implementation("com.pgvector:pgvector:0.1.4")
-    implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("com.google.code.gson:gson:2.10.1")
 
@@ -62,7 +64,6 @@ dependencies {
     runtimeOnly("com.mysql:mysql-connector-j")
     runtimeOnly("org.postgresql:postgresql")
     implementation("com.pgvector:pgvector:0.1.4")
-    implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
