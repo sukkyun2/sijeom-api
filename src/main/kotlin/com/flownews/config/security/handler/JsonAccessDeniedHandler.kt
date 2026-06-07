@@ -1,4 +1,4 @@
-package com.flownews.config.security
+package com.flownews.config.security.handler
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.flownews.api.common.api.ApiResponse

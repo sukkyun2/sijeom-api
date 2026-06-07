@@ -32,7 +32,7 @@ class JwtAuthenticationFilter(
             ?.takeIf { jwtService.validateToken(it) }
             ?.let(jwtService::getId)
             ?.let { userRepository.findByIdOrNull(it) }
-            ?.takeIf { it.deletedAt == null }
+            ?.takeIf { !it.isDeleted() }
             ?.let { setAuthentication(it, request) }
     }
 
