@@ -53,7 +53,6 @@ class SecurityConfig(
         when (access) {
             Access.PERMIT_ALL -> matcher.permitAll()
             Access.REQUIRE_USER -> matcher.hasRole(Role.USER.name)
-            Access.REQUIRE_ADMIN -> matcher.hasRole(Role.ADMIN.name)
         }
     }
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 class EventLikeApi(
     private val eventLikeService: EventLikeService,
 ) {
-    @PostMapping("/api/events/{eventId}/like")
+    @PostMapping("/clientsvc/events/{eventId}/like")
     fun toggleLike(
         @PathVariable eventId: Long,
         @CurrentUser user: User,

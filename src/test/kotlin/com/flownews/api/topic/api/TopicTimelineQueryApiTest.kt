@@ -75,7 +75,7 @@ class TopicTimelineQueryApiTest {
         every { topicTimelineQueryService.getTopic(any(), any()) } returns mockResponse
 
         mockMvc.perform(
-            get("/api/topics/{topicId}", 1L),
+            get("/clientsvc/topics/{topicId}", 1L),
         )
             .andExpect(status().isOk)
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 class UserProfileUpdateApi(
     private val userUpdateService: UserUpdateService,
 ) {
-    @PostMapping("/api/users/device-token")
+    @PostMapping("/clientsvc/users/device-token")
     fun updateDeviceToken(
         @CurrentUser user: User,
         @RequestBody request: UserDeviceTokenUpdateRequest,
@@ -25,7 +25,7 @@ class UserProfileUpdateApi(
         return ApiResponse.ok()
     }
 
-    @PostMapping("/api/users/withdraw")
+    @PostMapping("/clientsvc/users/withdraw")
     fun withdraw(
         @CurrentUser user: User,
         @RequestBody request: UserWithdrawRequest,

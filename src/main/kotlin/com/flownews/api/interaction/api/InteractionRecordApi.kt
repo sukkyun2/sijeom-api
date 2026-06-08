@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 class InteractionRecordApi(
     private val interactionRecordService: InteractionRecordService,
 ) {
-    @PostMapping("/api/interactions")
+    @PostMapping("/clientsvc/interactions")
     fun recordInteraction(
         @RequestBody request: InteractionRecordRequest,
         @CurrentUser user: User,

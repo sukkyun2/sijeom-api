@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 class PushMessageSendApi(
     private val pushMessageSender: TopicEventPushService,
 ) {
-    @PostMapping("/api/notifications/push", params = ["by=topic"])
+    @PostMapping("/intsvc/notifications/push", params = ["by=topic"])
     fun sendPushMessageByTopic(
         @RequestBody req: PushMessageSendRequest,
     ): ApiResponse<out Any?> =

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class UserQueryApi {
-    @GetMapping("/api/users/me")
+    @GetMapping("/clientsvc/users/me")
     fun getCurrentUser(
         @CurrentUser user: User,
     ): ApiResponse<UserQueryResponse> {

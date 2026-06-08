@@ -36,7 +36,7 @@ class InteractionRecordApiTest {
     @Test
     fun `사용자 인터랙션을 기록한다`() {
         mockMvc.perform(
-            post("/api/interactions")
+            post("/clientsvc/interactions")
                 .contentType(MediaType.APPLICATION_JSON)
                 .header("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...")
                 .content(

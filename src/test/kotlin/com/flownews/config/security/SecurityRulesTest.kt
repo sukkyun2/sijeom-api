@@ -34,15 +34,16 @@ class SecurityRulesTest {
         @JvmStatic
         fun cases(): Stream<Array<Any>> =
             Stream.of(
-                arrayOf(HttpMethod.GET, "/api/topics", Access.PERMIT_ALL),
-                arrayOf(HttpMethod.GET, "/api/topics/42", Access.PERMIT_ALL),
-                arrayOf(HttpMethod.GET, "/api/events/feed", Access.PERMIT_ALL),
-                arrayOf(HttpMethod.POST, "/api/topics/42", Access.REQUIRE_USER),
-                arrayOf(HttpMethod.POST, "/api/events/feed", Access.REQUIRE_USER),
-                arrayOf(HttpMethod.GET, "/api/notifications/push", Access.REQUIRE_ADMIN),
-                arrayOf(HttpMethod.POST, "/api/notifications/push", Access.REQUIRE_ADMIN),
-                arrayOf(HttpMethod.GET, "/api/users/me", Access.REQUIRE_USER),
-                arrayOf(HttpMethod.POST, "/api/topics/1/subscribe", Access.REQUIRE_USER),
+                arrayOf(HttpMethod.GET, "/clientsvc/topics", Access.PERMIT_ALL),
+                arrayOf(HttpMethod.GET, "/clientsvc/topics/42", Access.PERMIT_ALL),
+                arrayOf(HttpMethod.GET, "/clientsvc/topics/topk", Access.PERMIT_ALL),
+                arrayOf(HttpMethod.GET, "/clientsvc/events/feed", Access.PERMIT_ALL),
+                arrayOf(HttpMethod.GET, "/intsvc/notifications/push", Access.PERMIT_ALL),
+                arrayOf(HttpMethod.POST, "/intsvc/notifications/push", Access.PERMIT_ALL),
+                arrayOf(HttpMethod.POST, "/clientsvc/topics/42/toggle-subscription", Access.REQUIRE_USER),
+                arrayOf(HttpMethod.POST, "/clientsvc/events/1/like", Access.REQUIRE_USER),
+                arrayOf(HttpMethod.GET, "/clientsvc/users/me", Access.REQUIRE_USER),
+                arrayOf(HttpMethod.POST, "/clientsvc/interactions", Access.REQUIRE_USER),
             )
     }
 }

@@ -58,7 +58,7 @@ class TopicListQueryApiTest {
         every { topicListQueryService.getTopics(any()) } returns mockTopics
 
         mockMvc.perform(
-            get("/api/topics")
+            get("/clientsvc/topics")
                 .param("page", "0")
                 .param("size", "10"),
         )
@@ -96,7 +96,7 @@ class TopicListQueryApiTest {
         every { topicListQueryService.getTopKTopics(any()) } returns mockTopKTopics
 
         mockMvc.perform(
-            get("/api/topics/topk")
+            get("/clientsvc/topics/topk")
                 .param("limit", "5"),
         )
             .andExpect(status().isOk)
@@ -132,7 +132,7 @@ class TopicListQueryApiTest {
         every { topicListQueryService.getTopicsByKeyword(any()) } returns mockSearchResults
 
         mockMvc.perform(
-            get("/api/topics/search")
+            get("/clientsvc/topics/search")
                 .param("keyword", "AI"),
         )
             .andExpect(status().isOk)

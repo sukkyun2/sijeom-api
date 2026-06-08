@@ -57,7 +57,7 @@ class EventFeedQueryApiTest {
         every { eventFeedQueryService.getEventFeeds(any(), any()) } returns mockResponse
 
         mockMvc.perform(
-            get("/api/events/feed")
+            get("/clientsvc/events/feed")
                 .param("category", "기술"),
         )
             .andExpect(status().isOk)

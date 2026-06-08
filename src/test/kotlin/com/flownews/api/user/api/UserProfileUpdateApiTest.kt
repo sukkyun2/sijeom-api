@@ -37,7 +37,7 @@ class UserProfileUpdateApiTest {
     @Test
     fun `디바이스 토큰을 업데이트한다`() {
         mockMvc.perform(
-            post("/api/users/device-token")
+            post("/clientsvc/users/device-token")
                 .contentType(MediaType.APPLICATION_JSON)
                 .header("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...")
                 .content("""{"deviceToken": "fcm_device_token_12345"}"""),
@@ -62,7 +62,7 @@ class UserProfileUpdateApiTest {
     @Test
     fun `회원을 탈퇴한다`() {
         mockMvc.perform(
-            post("/api/users/withdraw")
+            post("/clientsvc/users/withdraw")
                 .contentType(MediaType.APPLICATION_JSON)
                 .header("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...")
                 .content("""{"reason": "서비스 불만족", "feedback": "앱 속도가 너무 느림"}"""),

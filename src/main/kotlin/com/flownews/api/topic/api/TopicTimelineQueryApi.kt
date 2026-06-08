@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 class TopicTimelineQueryApi(
     private val topicTimelineQueryService: TopicTimelineQueryService,
 ) {
-    @GetMapping("/api/topics/{topicId}")
+    @GetMapping("/clientsvc/topics/{topicId}")
     fun getTopic(
         @PathVariable topicId: Long,
         @CurrentUser user: User?,

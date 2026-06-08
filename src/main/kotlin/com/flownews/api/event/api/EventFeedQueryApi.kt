@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 class EventFeedQueryApi(
     private val eventFeedQueryService: EventFeedQueryService,
 ) {
-    @GetMapping("/api/events/feed")
+    @GetMapping("/clientsvc/events/feed")
     fun getUserEventFeed(
         @CurrentUser user: User?,
         @RequestParam(required = false) category: String?,

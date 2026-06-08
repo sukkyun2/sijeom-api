@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 class TopicSubscribeApi(
     private val topicSubscribeService: TopicSubscribeService,
 ) {
-    @PostMapping("/api/topics/{topicId}/toggle-subscription")
+    @PostMapping("/clientsvc/topics/{topicId}/toggle-subscription")
     fun toggleSubscription(
         @PathVariable topicId: Long,
         @CurrentUser user: User,

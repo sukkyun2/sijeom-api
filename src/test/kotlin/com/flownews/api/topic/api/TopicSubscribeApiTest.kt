@@ -38,7 +38,7 @@ class TopicSubscribeApiTest {
     @Test
     fun `토픽 구독을 토글한다`() {
         mockMvc.perform(
-            post("/api/topics/{topicId}/toggle-subscription", 1L)
+            post("/clientsvc/topics/{topicId}/toggle-subscription", 1L)
                 .contentType(MediaType.APPLICATION_JSON),
         )
             .andExpect(status().isOk)
