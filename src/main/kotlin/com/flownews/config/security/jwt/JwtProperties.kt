@@ -1,4 +1,4 @@
-package com.flownews.config.security
+package com.flownews.config.security.jwt
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

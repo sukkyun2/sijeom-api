@@ -1,4 +1,4 @@
-package com.flownews.config.security
+package com.flownews.config.security.jwt
 
 import com.flownews.api.user.domain.User
 import com.flownews.api.user.domain.UserRepository

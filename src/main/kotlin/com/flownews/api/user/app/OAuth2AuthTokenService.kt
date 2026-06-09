@@ -2,7 +2,7 @@ package com.flownews.api.user.app
 
 import com.flownews.api.user.domain.User
 import com.flownews.api.user.domain.enums.ClientPlatform
-import com.flownews.config.security.JwtService
+import com.flownews.config.security.jwt.JwtService
 import org.springframework.stereotype.Service
 
 @Service

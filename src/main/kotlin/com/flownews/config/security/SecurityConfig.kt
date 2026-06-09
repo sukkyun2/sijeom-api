@@ -5,6 +5,8 @@ import com.flownews.api.user.domain.enums.Role
 import com.flownews.config.security.handler.JsonAccessDeniedHandler
 import com.flownews.config.security.handler.JsonAuthenticationEntryPoint
 import com.flownews.config.security.handler.OAuth2LoginSuccessHandler
+import com.flownews.config.security.jwt.JwtAuthenticationFilter
+import com.flownews.config.security.jwt.JwtService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
