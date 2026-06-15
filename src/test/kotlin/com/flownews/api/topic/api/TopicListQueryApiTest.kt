@@ -133,7 +133,7 @@ class TopicListQueryApiTest {
 
         mockMvc.perform(
             get("/clientsvc/topics/search")
-                .param("keyword", "AI"),
+                .param("query", "AI"),
         )
             .andExpect(status().isOk)
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -143,7 +143,7 @@ class TopicListQueryApiTest {
                     preprocessRequest(prettyPrint()),
                     preprocessResponse(prettyPrint()),
                     queryParameters(
-                        parameterWithName("keyword").description("토픽 제목 또는 설명 검색 키워드"),
+                        parameterWithName("query").description("토픽 제목 또는 설명 검색 키워드"),
                     ),
                     responseFields(
                         *ApiResponseFieldSpecs.responseWithData("검색 결과 배열 데이터"),

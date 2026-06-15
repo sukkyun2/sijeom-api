@@ -27,12 +27,5 @@ class TopicListQueryApi(
     @GetMapping("/clientsvc/topics/search")
     fun searchTopics(
         @ModelAttribute req: TopicListQueryRequest,
-    ): ApiResponse<out Any?> {
-        return try {
-            val topics = topicListQueryService.getTopicsByKeyword(req)
-            ApiResponse.ok(topics)
-        } catch (e: IllegalArgumentException) {
-            ApiResponse.badRequest(e.message)
-        }
-    }
+    ): ApiResponse<List<TopicListQueryResponse>> = ApiResponse.ok(topicListQueryService.getTopicsByKeyword(req))
 }
