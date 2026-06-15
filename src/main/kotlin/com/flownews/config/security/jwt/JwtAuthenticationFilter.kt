@@ -30,7 +30,7 @@ class JwtAuthenticationFilter(
     private fun authenticateRequest(request: HttpServletRequest) {
         resolveToken(request)
             ?.takeIf { jwtService.validateToken(it) }
-            ?.let(jwtService::getId)
+            ?.let { jwtService.getId(it) }
             ?.let { userRepository.findByIdOrNull(it) }
             ?.takeIf { !it.isDeleted() }
             ?.let { setAuthentication(it, request) }
