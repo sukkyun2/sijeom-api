@@ -35,6 +35,7 @@ dependencies {
     implementation("org.hibernate.orm:hibernate-vector:6.6.15.Final")
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -60,10 +61,6 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
     testImplementation("io.mockk:mockk:1.13.8")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
-    runtimeOnly("com.h2database:h2")
-    runtimeOnly("com.mysql:mysql-connector-j")
-    runtimeOnly("org.postgresql:postgresql")
-    implementation("com.pgvector:pgvector:0.1.4")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
