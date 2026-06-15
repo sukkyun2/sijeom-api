@@ -12,11 +12,13 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
+import org.hibernate.annotations.SQLRestriction
 import java.time.LocalDateTime
 
 @Entity
 @Table(name = "likes")
-class Like(
+@SQLRestriction("deleted_at IS NULL")
+class EventLike(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -26,23 +28,17 @@ class Like(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
     val event: Event,
-    @Column(name = "is_deleted")
-    var isDeleted: LocalDateTime? = null,
+    @Column(name = "deleted_at")
+    var deletedAt: LocalDateTime? = null,
 ) : BaseEntity() {
     fun delete() {
-        this.isDeleted = LocalDateTime.now()
+        this.deletedAt = LocalDateTime.now()
     }
 
     companion object {
         fun of(
             user: User,
             event: Event,
-        ): Like {
-            return Like(
-                user = user,
-                event = event,
-                isDeleted = null,
-            )
-        }
+        ): EventLike = EventLike(user = user, event = event)
     }
 }

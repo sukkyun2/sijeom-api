@@ -2,8 +2,8 @@ package com.flownews.api.event.app
 
 import com.flownews.api.event.domain.Event
 import com.flownews.api.event.domain.EventQueryService
-import com.flownews.api.event.domain.reaction.Like
-import com.flownews.api.event.domain.reaction.LikeRepository
+import com.flownews.api.event.domain.reaction.EventLike
+import com.flownews.api.event.domain.reaction.EventLikeRepository
 import com.flownews.api.user.domain.User
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 class EventLikeService(
-    private val likeRepository: LikeRepository,
+    private val eventLikeRepository: EventLikeRepository,
     private val eventQueryService: EventQueryService,
 ) {
     fun toggleLike(
@@ -31,20 +31,19 @@ class EventLikeService(
     private fun findExistingLike(
         userId: Long,
         eventId: Long,
-    ): Like? {
-        return likeRepository.findByUserIdAndEventIdAndIsDeletedIsNull(userId, eventId)
+    ): EventLike? {
+        return eventLikeRepository.findByUserIdAndEventId(userId, eventId)
     }
 
     private fun addLike(
         event: Event,
         user: User,
     ) {
-        val newLike = Like.of(user, event)
-        likeRepository.save(newLike)
+        eventLikeRepository.save(EventLike.of(user, event))
     }
 
-    private fun removeLike(like: Like) {
-        like.delete()
-        likeRepository.save(like)
+    private fun removeLike(eventLike: EventLike) {
+        eventLike.delete()
+        eventLikeRepository.save(eventLike)
     }
 }

@@ -1,23 +1,12 @@
 package com.flownews.api.event.domain.reaction
 
 import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.data.jpa.repository.Query
 
-interface LikeRepository : JpaRepository<Like, Long> {
-    fun findByUserIdAndEventIdAndIsDeletedIsNull(
+interface EventLikeRepository : JpaRepository<EventLike, Long> {
+    fun findByUserIdAndEventId(
         userId: Long,
         eventId: Long,
-    ): Like?
-
-    @Query(
-        """
-        SELECT COUNT(l) 
-        FROM Like l 
-        WHERE l.event.id = :eventId 
-        AND l.isDeleted IS NULL
-        """,
-    )
-    fun countByEventIdAndIsDeletedIsNull(eventId: Long): Long
+    ): EventLike?
 
     fun existsByUserIdAndEventId(
         userId: Long,

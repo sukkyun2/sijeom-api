@@ -1,14 +1,14 @@
 package com.flownews.api.event.domain
 
 import com.flownews.api.common.app.NoDataException
-import com.flownews.api.event.domain.reaction.LikeRepository
+import com.flownews.api.event.domain.reaction.EventLikeRepository
 import com.flownews.api.user.domain.User
 import org.springframework.stereotype.Service
 
 @Service
 class EventQueryService(
     private val eventRepository: EventRepository,
-    private val likeRepository: LikeRepository,
+    private val eventLikeRepository: EventLikeRepository,
 ) {
     fun getLikedEvent(
         id: Long,
@@ -19,7 +19,7 @@ class EventQueryService(
             return LikedEvent(event, false)
         }
 
-        val isLiked = likeRepository.existsByUserIdAndEventId(user.requireId(), id)
+        val isLiked = eventLikeRepository.existsByUserIdAndEventId(user.requireId(), id)
 
         return LikedEvent(event, isLiked)
     }
