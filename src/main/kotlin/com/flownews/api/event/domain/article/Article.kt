@@ -1,5 +1,6 @@
 package com.flownews.api.event.domain.article
 
+import BaseEntity
 import com.flownews.api.event.domain.Event
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -31,6 +32,6 @@ class Article(
     var source: String,
     @Column(name = "url")
     var url: String,
-) {
+) : BaseEntity() {
     fun requireId(): Long = id ?: throw IllegalStateException("Article ID cannot be null")
 }
