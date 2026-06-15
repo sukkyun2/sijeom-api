@@ -9,8 +9,8 @@ import com.flownews.api.topic.domain.TopicRepository
 import com.flownews.api.topic.domain.TopicSubscription
 import com.flownews.api.topic.domain.TopicSubscriptionRepository
 import com.flownews.api.user.domain.User
-import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class TopicSubscribeService(
