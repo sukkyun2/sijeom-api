@@ -20,4 +20,6 @@ jobs:
           plugin_marketplaces: "https://github.com/anthropics/claude-code.git"
           plugins: "code-review@claude-code-plugins"
           prompt: "/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }} --comment"
+          claude_args: |
+            --allowedTools "Skill"
           show_full_output: true
