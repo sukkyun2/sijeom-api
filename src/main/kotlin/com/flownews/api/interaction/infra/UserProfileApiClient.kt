@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody
 @FeignClient(
     name = "user-profile-service",
     url = "\${recommendation.api.url}",
+    fallbackFactory = UserProfileApiClientFallbackFactory::class,
 )
 interface UserProfileApiClient {
     @PostMapping("/v1/users/{userId}/profile/topics")

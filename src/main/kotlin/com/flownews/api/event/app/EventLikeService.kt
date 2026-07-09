@@ -1,7 +1,6 @@
 package com.flownews.api.event.app
 
 import com.flownews.api.event.domain.Event
-import com.flownews.api.event.domain.EventQueryService
 import com.flownews.api.event.domain.reaction.EventLike
 import com.flownews.api.event.domain.reaction.EventLikeRepository
 import com.flownews.api.user.domain.User

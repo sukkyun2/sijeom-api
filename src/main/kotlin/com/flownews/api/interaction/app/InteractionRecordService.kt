@@ -1,13 +1,12 @@
 package com.flownews.api.interaction.app
 
 import com.flownews.api.common.app.NoDataException
-import com.flownews.api.event.domain.EventQueryService
+import com.flownews.api.event.app.EventQueryService
 import com.flownews.api.interaction.domain.Interaction
 import com.flownews.api.interaction.domain.InteractionRepository
-import com.flownews.api.interaction.infra.EventBasedProfileUpdateRequest
-import com.flownews.api.interaction.infra.UserProfileApiClient
 import com.flownews.api.user.domain.User
 import com.flownews.api.user.domain.UserRepository
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -17,7 +16,7 @@ class InteractionRecordService(
     private val interactionRepository: InteractionRepository,
     private val userRepository: UserRepository,
     private val eventQueryService: EventQueryService,
-    private val userProfileApiClient: UserProfileApiClient,
+    private val eventPublisher: ApplicationEventPublisher,
 ) {
     fun recordInteraction(
         request: InteractionRecordRequest,
@@ -36,14 +35,12 @@ class InteractionRecordService(
                 interactionType = interactionType,
             )
 
-        userProfileApiClient.updateProfileByEvent(
-            userId = userId,
-            request =
-                EventBasedProfileUpdateRequest(
-                    userId = userId,
-                    eventIds = listOf(eventId),
-                    action = interactionType,
-                ),
+        eventPublisher.publishEvent(
+            EventProfileUpdateEvent(
+                userId = userId,
+                eventIds = listOf(eventId),
+                action = interactionType,
+            ),
         )
 
         return interactionRepository.save(interaction)

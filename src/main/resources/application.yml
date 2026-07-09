@@ -53,6 +53,10 @@ recommendation:
   api:
     url: ${RECOMMENDATION_API_URL}
 
+feign:
+  circuitbreaker:
+    enabled: true
+
 management:
   endpoints:
     web:
