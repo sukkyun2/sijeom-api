@@ -19,7 +19,7 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           plugin_marketplaces: "https://github.com/anthropics/claude-code.git"
           plugins: "code-review@claude-code-plugins"
-          prompt: "/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }} --comment"
+          prompt: "/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }} --comment\n\nIMPORTANT: This runs as a one-shot, non-interactive CI job with no ability to receive later notifications. Do NOT launch any sub-agent or Task/Agent tool call in background mode (do not rely on being notified later). Always pass run_in_background: false (or the foreground equivalent) so every sub-agent call blocks and returns its result before you proceed, and finish the entire review, including posting comments, within this single turn."
           claude_args: |
             --allowedTools "Skill"
           show_full_output: true
