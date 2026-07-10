@@ -27,4 +27,6 @@ jobs:
   
             이 PR의 코드를 리뷰해주세요. 버그, 성능, 가독성, 보안 관점에서 검토하고
             PR 코멘트로 남겨주세요.
+          claude_args: |
+            --allowedTools "Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr comment:*)"
           show_full_output: true
