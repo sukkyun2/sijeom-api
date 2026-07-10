@@ -2,9 +2,14 @@ name: Code Review
 on:
   pull_request:
     types: [opened, synchronize]
+  issue_comment:
+    types: [created]
 
 jobs:
   review:
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude'))
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -13,13 +18,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          plugin_marketplaces: "https://github.com/anthropics/claude-code.git"
-          plugins: "code-review@claude-code-plugins"
-          prompt: "/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }} --comment\n\nIMPORTANT: This runs as a one-shot, non-interactive CI job with no ability to receive later notifications. Do NOT launch any sub-agent or Task/Agent tool call in background mode (do not rely on being notified later). Always pass run_in_background: false (or the foreground equivalent) so every sub-agent call blocks and returns its result before you proceed, and finish the entire review, including posting comments, within this single turn."
-          claude_args: |
-            --allowedTools "Skill"
+          prompt: |
+            이 PR의 변경 사항을 코드 리뷰해주세요.
+            - 코드 품질 및 가독성
+            - 잠재적인 버그
+            - 성능 이슈
+            - 보안 취약점
+            리뷰 결과를 PR 코멘트로 남겨주세요.
           show_full_output: true
