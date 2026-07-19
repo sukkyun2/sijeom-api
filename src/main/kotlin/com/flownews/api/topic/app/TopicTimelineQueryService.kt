@@ -1,6 +1,6 @@
 package com.flownews.api.topic.app
 
-import com.flownews.api.event.domain.EventQueryService
+import com.flownews.api.event.app.EventQueryService
 import com.flownews.api.topic.domain.TopicQueryService
 import com.flownews.api.user.domain.User
 import org.springframework.stereotype.Service
